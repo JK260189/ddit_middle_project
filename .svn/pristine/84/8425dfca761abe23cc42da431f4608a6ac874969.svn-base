@@ -1,0 +1,51 @@
+package kr.or.ddit.member.qaBoard.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.member.qaBoard.service.IQABoardService;
+import kr.or.ddit.member.qaBoard.service.QABoardServiceImpl;
+import kr.or.ddit.member.vo.QaboardVO;
+
+
+@WebServlet("/qABoardUpdate.do")
+public class QABoardUpdate extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		int qa_code = Integer.parseInt(request.getParameter("qa_codeInsert"));
+		int s_code= Integer.parseInt(request.getParameter("qaS_CodeInsert"));
+		String qa_title = request.getParameter("qaTitleInsert");
+		String qa_content = request.getParameter("qaContentInsert");
+		int m_code = Integer.parseInt(request.getParameter("qaM_codeInsert"));
+		
+		QaboardVO qaboardVO = new QaboardVO();
+		qaboardVO.setQa_code(qa_code);
+		qaboardVO.setS_code(s_code);
+		qaboardVO.setQa_title(qa_title);
+		qaboardVO.setQa_content(qa_content);
+		qaboardVO.setM_code(m_code);
+		
+		IQABoardService service = QABoardServiceImpl.getQABoardService();
+		
+		int cnt = service.updateQaBoard(qaboardVO);
+		
+		if(cnt==1) {
+			System.out.println("문의 게시글 수정 sql 메서드 성공");
+		}
+		
+		request.setAttribute("viewPage", "/WEB-INF/view/member/QaBoard_List.jsp");
+		request.getRequestDispatcher("/layout/layout.jsp").forward(request, response);
+		
+	}
+
+}

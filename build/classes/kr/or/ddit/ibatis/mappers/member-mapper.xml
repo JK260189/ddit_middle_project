@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다.
+ -->
+ <!DOCTYPE sqlMap
+ 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+ 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap namespace= "member">
+ 
+
+ 	
+ 	<select id = "getMember" parameterClass = "String" resultClass = "memberVO">
+ 		select * from member where m_id = #m_id#
+ 	</select>
+ 	
+ 	<insert id = "insertMember" parameterClass = "memberVO" >
+ 		insert into member(m_code, m_id, m_pass, m_name, m_email,m_addr)
+ 		values(member_seq.nextval, #m_id#, #m_pass#, #m_name#, #m_email#,#m_addr#)
+ 	</insert>
+ 
+ 	<update id = "modifyMember" parameterClass = "memberVO">
+ 		update member set m_pass = #m_pass#,  m_email = #m_email#, m_addr = #m_addr#
+ 		where m_id = #m_id#
+ 	</update>
+ 	
+ 	<delete id = "deleteMember" parameterClass = "String">
+ 		delete from member where m_id = #m_id#
+ 	</delete>
+ 	
+ 	<select id = "idCheck" parameterClass = "string" resultClass = "int">
+ 		select count(*) as cnt from member where m_id = #m_id#
+ 	</select>
+ 	
+ 	 <select id = "getAllMember" resultClass = "memberVO">
+ 		select * from member
+ 	</select>
+ 	
+ 	<select id="getLoginMember" resultClass="memberVO" parameterClass="memberVO">
+		select * from member where m_id=#m_id# and m_pass=#m_pass#
+	</select>
+	
+	<select id="getPass" resultClass="int" parameterClass="String">
+		select count(*) as cnt from member where m_pass = #m_pass#
+	</select>
+	
+ 	
+ 	
+ </sqlMap>

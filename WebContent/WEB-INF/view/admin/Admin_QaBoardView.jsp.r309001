@@ -1,0 +1,165 @@
+<%@page import="kr.or.ddit.admin.answer.service.AnswerServiceImpl"%>
+<%@page import="kr.or.ddit.admin.answer.service.IAnswerService"%>
+<%@page import="kr.or.ddit.admin.answer.vo.AnswerVO"%>
+<%@page import="kr.or.ddit.member.qaBoard.service.QABoardServiceImpl"%>
+<%@page import="kr.or.ddit.member.qaBoard.service.IQABoardService"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.or.ddit.member.vo.ScheduleVO"%>
+<%@page import="kr.or.ddit.member.vo.MemberVO"%>
+<%@page import="kr.or.ddit.member.vo.QaboardVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	System.out.println("Admin_QaBoard_View.jsp 진입 성공");
+	// 게시물 내용 화면(수정화면X)
+	
+	//이전 작성 내용
+	List<QaboardVO> list = (List<QaboardVO>) request.getAttribute("Admin_QaBoard_View");
+	
+	int qa_code = (int)request.getAttribute("qa_code");
+	System.out.println("qa_code 값 : "+qa_code);
+	
+	int m_code = (int)request.getAttribute("m_code");
+	System.out.println("m_code 값 : "+m_code);
+	
+	IQABoardService service = QABoardServiceImpl.getQABoardService();
+	System.out.println("*** qaBoard service 호출 ***");
+	List<MemberVO> memList = (List<MemberVO>)service.selectMember(m_code);
+	System.out.println("*** sql 문 처리 ***");
+	
+	if(memList==null){
+		System.out.println("*** mem은 비어있는 vo 입니다.");
+	}
+	
+	if(list==null||list.size()==0) {
+		System.out.println("게시글 상세 내용 없음");
+	%>
+		<h2>게시글 내용이 존재하지 않습니다.</h2>
+	<% 	
+		
+	} else{
+		int s_code=0;
+		
+		for(QaboardVO qvo : list) {
+			for(MemberVO mvo : memList){
+				if(qvo.getM_code()==mvo.getM_code()){
+			System.out.println("게시글 상세 내용 진입 성공");
+			
+			List<ScheduleVO> stitle_list = (List<ScheduleVO>)service.selectSTitle(m_code);
+			
+			s_code=qvo.getS_code();
+			
+			System.out.println("s_code 값 : "+s_code);
+			
+%>
+<div id="main">
+	<p class="title">1: 1 문의 게시글</p>
+	<hr>
+	<input type="hidden" id="qa_code" name="qa_code" value="<%=qa_code %>">
+	
+	<div id="totalBox">
+
+		<label for="writer" class="writerLabel">글쓴이</label>
+			<div id="writer"><%=mvo.getM_name() %></div>
+		<input type="hidden" id="writer" name="qaM_code" value="<%=m_code %>">
+
+	
+    <hr>	
+	<div class="qaboardTitle">
+		<label for="title" class="qaTitle">제목</label>
+		<div type="text" id="qa_title"><%=qvo.getQa_title() %></div>
+	</div>
+	<hr>
+  
+	<div class="packageSelect">
+		<label for="title" class="checkedPackage">패키지 여행</label>
+		<div type="text" id="qa_title">
+<%
+		for(ScheduleVO svo : stitle_list) {
+			System.out.println("선택한 패키지 여행");
+			
+			if(s_code==svo.getS_code()) {
+	
+%>
+		<%=svo.getS_title() %>
+<%
+			}
+		}
+%>
+		</div>
+	</div>
+
+
+	<hr>
+	<div class="qaboardContent">
+		<label for="qa_content" class="qaContent">문의 내용</label>
+		<div id="qa_content"><%=qvo.getQa_content() %></div>
+	</div>
+	
+	<hr>
+	<p class="qaTitle">답변</p>
+	<hr>
+	
+	<%
+	
+		IAnswerService ansService = AnswerServiceImpl.getAnswerService();
+	
+		List<AnswerVO> ansList = ansService.selectByAnswerList(qa_code);
+	
+		System.out.println("ansList 값 : "+ansList);
+		
+		if(ansList==null||ansList.size()==0){
+%>	
+			<p class="qa_content">답변이 존재하지 않습니다.</p>
+<%			
+		} else {
+		for(AnswerVO ansVO : ansList){
+			if(ansVO.getQa_code()==qa_code){
+			
+	%>	
+		<div class="buttonArea" style="background-color: whitesmoke;">
+		<div id="answer_head"><p>답변<%=ansVO.getAns_code() %>></p> <p><%=ansVO.getAns_date() %></p>
+			<div id="answer"><%=ansVO.getAns_content() %></div>
+			<input style="float:left;" type="hidden" id="ans_code" name="ans_code" value="<%=ansVO.getAns_code() %>">
+			<button style="float:left;" type="button" id="qaButtonInsert1" class="w-btn-outline w-btn-indigo-outline" data-bs-toggle="popover" title="1:1 문의 게시글 답변 작성 완료 버튼" onclick="delQaBoard_AnswerByOne(this)">삭제</button>
+		</div>
+		</div>
+		<hr>
+<%
+				}
+			}
+		}
+	}
+}
+		%>
+		
+		
+		<div class="buttonArea">
+			<button type="button" id="qaButtonInsert1" class="w-btn-outline w-btn-indigo-outline" data-bs-toggle="popover" title="1:1 문의 게시글 삭제 버튼" onclick="delAdminQaBoardByOne(this)">삭제</button>
+			<button type="button" id="qaButtonInsert1" class="w-btn-outline w-btn-indigo-outline" data-bs-toggle="popover" title="1:1 문의 게시글 답변 작성 취소 버튼" type="reset" onclick=location.href="<%=request.getContextPath() %>/admin_QABoardList.do">돌아가기</button>
+		</div>
+	
+	</div>
+</div>
+<%
+		}
+	}
+	System.out.println("qa_code 값 : "+qa_code);
+
+	
+%>
+	<hr>
+	<div id="answer_head">
+	<div id="answerBox">
+		<div id="answer">
+		<div class="buttonArea">
+			<form method="post">
+				<textarea id="answerContent" name="answerContent" placeholder="1 : 1 문의 게시글에대한 답변을 입력하십시오."></textarea>	
+				<button type="button" id="qaButtonInsert1" class="w-btn-outline w-btn-indigo-outline" data-bs-toggle="popover" title="1:1 문의 게시글 답변 작성 완료 버튼" onclick="insertAnswer(this)">답변 완료</button>
+			</form>
+			</div>
+		</div>
+	</div>
+	</div>
+<script src="<%=request.getContextPath() %>/js/admin_qaboard.js"></script>

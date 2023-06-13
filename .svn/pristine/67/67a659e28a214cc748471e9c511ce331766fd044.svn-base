@@ -1,0 +1,261 @@
+/**
+ * 
+ */
+
+function delAdminQaBoardByOne(btn) {
+	if(confirm("정말 삭제하겠습니까?")==true) {
+
+		$.ajax({
+			url:"/MiddleTermProject/admin_QaBoardDel.do",
+			data:{
+				qa_code: $("#qa_code").text()
+				},
+				type:"post",
+				success:function(data){
+					
+					alert("삭제를 완료했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				error:function(xhr){
+					
+					alert("삭제를 실패했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				dataType:"text"
+			})
+		} else {
+			return false;
+		}
+}
+
+	function delQaBoardByOne(btn) {
+		if(confirm("정말 삭제하겠습니까?")==true) {
+			
+			
+			$.ajax({
+				url:"/MiddleTermProject/admin_QaBoardDel.do",
+				data:{
+						qa_code: $("#qa_code").text()
+				},
+				type:"post",
+				success:function(data){
+					
+					alert("삭제를 완료했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				error:function(xhr){
+					
+					alert("삭제를 실패했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				dataType:"text"
+			})
+		} else {
+			return false;
+		}
+	}
+	
+	
+		function delQaBoard(btn) {
+		if(confirm("정말 삭제하겠습니까?")==true) {
+			
+		
+			
+			$.ajax({
+				url:"/MiddleTermProject/admin_QaBoardDel.do",
+				data:{
+						qa_code: $("#qa_code").text()
+				},
+				type:"post",
+				success:function(data){
+					
+					alert("삭제를 완료했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				error:function(xhr){
+					
+					alert("삭제를 실패했습니다.");
+					
+					location.href="/admin_QABoardList.do"
+				},
+				dataType:"text"
+			})
+		} else {
+			return false;
+		}
+	}
+	
+	
+	function delQaBoard_AnswerByOne(btn) {
+		alert($("#ans_code").val())
+		if(confirm("정말 삭제하겠습니까?")==true) {
+
+			$.ajax({
+				url:"/MiddleTermProject/admin_QaBoard_AnswerDel.do",
+				data:{
+						ans_code: $("#ans_code").val()
+				},
+				type:"post",
+				success:function(data){
+					
+					if(data.flag=="성공"){
+					alert("삭제를 완료했습니다.");
+					
+					location.href="/MiddleTermProject/admin_QaBoardView.do?qa_code="+$("#qa_code").val()
+					} else {
+						alert("삭제를 실패했습니다.");
+					}
+				},
+				error:function(xhr){
+					
+					alert("삭제를 실패했습니다.");
+					
+					location.href="/MiddleTermProject/admin_QaBoardView.do?qa_code="+$("#qa_code").val()
+				},
+				dataType:"json"
+			})
+		} else {
+			return false;
+		}
+	}
+	
+	
+
+function typingAnswer() {
+	
+	$('#iqaButton').css({
+		display:"block"
+	})
+	
+}
+
+function insertAnswer(btn) {
+	console.log("=====>", $("#qa_codeHere").val())
+	console.log("=====>", $("#answerContent").val())
+	
+	$.ajax({
+		url:"/MiddleTermProject/admin_QaBoardInsert.do",
+		type:"post",
+		data:{
+			qa_code: $("#qa_code").val(),
+			ansContent: $("#answerContent").val()
+		},
+		success:function(data){
+					
+			if(data.flag=="성공"){
+				alert("답변 입력을 완료했습니다.");
+			location.href="/MiddleTermProject/admin_QaBoardView.do?qa_code="+$("#qa_code").val()
+			} else {
+				alert("실패했습니다.")
+			}
+		},
+		error:function(xhr){
+					
+			alert("답변 입력을 실패했습니다.");
+					
+		},
+		dataType:"json"
+	})
+}
+
+
+function selectQaBoardDel(btn) {
+	var selectArr=[]
+	
+	console.log("length=====>", $('input[name="qaBoardSelectDel"]:checked').length)
+	$('input[name="qaBoardSelectDel"]:checked').each(function(){
+		console.log("=====>", $(this).val())
+		selectArr.push($(this).val())
+	})
+	console.log("selectArr", selectArr);
+	if(confirm("정말 삭제하겠습니까?")==true) {
+			
+			
+			$.ajax({
+				url:"/MiddleTermProject/admin_QaBoard_SelectDel.do",
+				data:{
+						checkArr:selectArr
+				},
+				traditional:true,
+				type:"post",
+				success:function(data){
+					
+					alert("삭제를 완료했습니다.");
+					
+					location.href="/MiddleTermProject/admin_QABoardList.do"
+				},
+				error:function(xhr){
+					
+					alert("삭제를 실패했습니다.");
+					location.href="/MiddleTermProject/admin_QABoardList.do"
+					
+				},
+				dataType:"json"
+			})
+		} else {
+			return false;
+		}
+}
+
+	function memDelQaBoardByOne(btn) {
+		if(confirm("정말 삭제하겠습니까?")==true) {
+			
+			
+			$.ajax({
+				url:"/MiddleTermProject/qABoardDelete.do",
+				data:{
+						qa_code: $("#qa_code").val()
+				},
+				type:"post",
+				success:function(data){
+					alert("삭제를 완료했습니다.");
+					location.href="/MiddleTermProject/qABoardList.do"
+					
+				},
+				error:function(xhr){
+					
+					alert("삭제를 완료했습니다.");
+					location.href="/MiddleTermProject/qABoardList.do"
+					
+					location.href="/qABoardList.do"
+				},
+				dataType:"text"
+			})
+		} else {
+			return false;
+		}
+	}
+	
+function insertQaboard(btn) {
+
+		$.ajax({
+			url:"/MiddleTermProject/qABoardInsertForm.do",
+			type:"post",
+			data:{
+					m_code: $("#qaM_code").val(),
+					qa_title: $("#qa_title").val(),
+					s_code: $("#s_code").val(),
+					qa_content: $("#qa_content").val()
+			},
+			success:function(data){
+					
+					if(data.flag=="성공"){
+						alert("게시글 입력을 완료했습니다.");
+						location.href="/MiddleTermProject/qABoardList.do"
+					} else {
+						alert("게시글 입력을 실패했습니다.")
+					}
+			},
+			error:function(xhr){		
+					alert("제목, 패키지 여행, 내용을 다시 확인해주십시오.");	
+			},
+			dataType:"json"
+		})
+	
+}
+

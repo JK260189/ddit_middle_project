@@ -1,0 +1,525 @@
+package kr.or.ddit.product.vo;
+
+public class DetailVO {
+	
+	private int fo_code;
+	private int fo_min;
+	private int fo_max;
+	private int fo_price;
+	private int fo_valid;
+	private String fo_img;
+	private String fo_department;
+	private String flight_code;
+	private String fo_arrival;
+	private String fo_name;
+	
+	private String city_code;
+	private String city_name;
+	private int city_lati;
+	private int city_long;
+	private String city_img;
+	private String city_eng;
+	
+	private String air_code;
+	private String m_code;
+	private String dep_loca1;
+	private String dep_loca2;
+	private String dep_date1;
+	private String dep_date2;
+	private String dep_time1;
+	private String dep_time2;
+	private String re_loca1;
+	private String re_loca2;
+	private String re_date1;
+	private String re_date2;
+	private String re_time1;
+	private String re_time2;
+	
+	private String h_code;
+	private String h_name;
+	private int h_lati;
+	private int h_long;
+	private String h_phone;
+	private String h_basicaddr;
+	private String h_addr;
+	private String h_img;
+	private String h_content;
+	private int h_starn;
+	private String h_basiccontent;
+	private int h_occupants;
+	
+	private String r_title;
+	private String r_code;
+	private String p_code;
+	private String r_content;
+	private String r_date;
+	private int r_score;
+	private int r_count;
+	
+	private int do_code;
+	private int do_min;
+	private int do_max;
+	private int do_price;
+	private int do_valid;
+	private String do_img;
+	private String do_department;
+	
+	private int bus_code;
+	private String bus_dep_loca;
+	private String bus_arr_loca;
+	private String bus_dep_date;
+	private String bus_arr_date;
+	private String bus_dep_time;
+	private String bus_arr_time;
+	
+	public int getBus_code() {
+		return bus_code;
+	}
+	public void setBus_code(int bus_code) {
+		this.bus_code = bus_code;
+	}
+	public String getBus_dep_loca() {
+		return bus_dep_loca;
+	}
+	public void setBus_dep_loca(String bus_dep_loca) {
+		this.bus_dep_loca = bus_dep_loca;
+	}
+	public String getBus_arr_loca() {
+		return bus_arr_loca;
+	}
+	public void setBus_arr_loca(String bus_arr_loca) {
+		this.bus_arr_loca = bus_arr_loca;
+	}
+	public String getBus_dep_date() {
+		return bus_dep_date;
+	}
+	public void setBus_dep_date(String bus_dep_date) {
+		this.bus_dep_date = bus_dep_date;
+	}
+	public String getBus_arr_date() {
+		return bus_arr_date;
+	}
+	public void setBus_arr_date(String bus_arr_date) {
+		this.bus_arr_date = bus_arr_date;
+	}
+	public String getBus_dep_time() {
+		return bus_dep_time;
+	}
+	public void setBus_dep_time(String bus_dep_time) {
+		this.bus_dep_time = bus_dep_time;
+	}
+	public String getBus_arr_time() {
+		return bus_arr_time;
+	}
+	public void setBus_arr_time(String bus_arr_time) {
+		this.bus_arr_time = bus_arr_time;
+	}
+	public int getFo_code() {
+		return fo_code;
+	}
+	public void setFo_code(int fo_code) {
+		this.fo_code = fo_code;
+	}
+	public int getFo_min() {
+		return fo_min;
+	}
+	public void setFo_min(int fo_min) {
+		this.fo_min = fo_min;
+	}
+	public int getFo_max() {
+		return fo_max;
+	}
+	public void setFo_max(int fo_max) {
+		this.fo_max = fo_max;
+	}
+	public int getFo_price() {
+		return fo_price;
+	}
+	public void setFo_price(int fo_price) {
+		this.fo_price = fo_price;
+	}
+	public int getFo_valid() {
+		return fo_valid;
+	}
+	public void setFo_valid(int fo_valid) {
+		this.fo_valid = fo_valid;
+	}
+	public String getFo_img() {
+		return fo_img;
+	}
+	public void setFo_img(String fo_img) {
+		this.fo_img = fo_img;
+	}
+	public String getFo_department() {
+		return fo_department;
+	}
+	public void setFo_department(String fo_department) {
+		this.fo_department = fo_department;
+	}
+	public String getFo_arrival() {
+		return fo_arrival;
+	}
+	public void setFo_arrival(String fo_arrival) {
+		this.fo_arrival = fo_arrival;
+	}
+	public String getFo_name() {
+		return fo_name;
+	}
+	public void setFo_name(String fo_name) {
+		this.fo_name = fo_name;
+	}
+	public int getDo_code() {
+		return do_code;
+	}
+	public void setDo_code(int do_code) {
+		this.do_code = do_code;
+	}
+	public int getDo_min() {
+		return do_min;
+	}
+	public void setDo_min(int do_min) {
+		this.do_min = do_min;
+	}
+	public int getDo_max() {
+		return do_max;
+	}
+	public void setDo_max(int do_max) {
+		this.do_max = do_max;
+	}
+	public int getDo_price() {
+		return do_price;
+	}
+	public void setDo_price(int do_price) {
+		this.do_price = do_price;
+	}
+	public int getDo_valid() {
+		return do_valid;
+	}
+	public void setDo_valid(int do_valid) {
+		this.do_valid = do_valid;
+	}
+	public String getDo_img() {
+		return do_img;
+	}
+	public void setDo_img(String do_img) {
+		this.do_img = do_img;
+	}
+	public String getDo_department() {
+		return do_department;
+	}
+	public void setDo_department(String do_department) {
+		this.do_department = do_department;
+	}
+	public String getDo_arrival() {
+		return do_arrival;
+	}
+	public void setDo_arrival(String do_arrival) {
+		this.do_arrival = do_arrival;
+	}
+	public String getDo_name() {
+		return do_name;
+	}
+	public void setDo_name(String do_name) {
+		this.do_name = do_name;
+	}
+	private String do_arrival;
+	private String do_name;
+	
+	public int getfo_code() {
+		return fo_code;
+	}
+	public void setfo_code(int fo_code) {
+		this.fo_code = fo_code;
+	}
+	public int getfo_min() {
+		return fo_min;
+	}
+	public void setfo_min(int fo_min) {
+		this.fo_min = fo_min;
+	}
+	public int getfo_max() {
+		return fo_max;
+	}
+	public void setfo_max(int fo_max) {
+		this.fo_max = fo_max;
+	}
+	public int getfo_price() {
+		return fo_price;
+	}
+	public void setfo_price(int fo_price) {
+		this.fo_price = fo_price;
+	}
+	public int getfo_valid() {
+		return fo_valid;
+	}
+	public void setfo_valid(int fo_valid) {
+		this.fo_valid = fo_valid;
+	}
+	public String getfo_img() {
+		return fo_img;
+	}
+	public void setfo_img(String fo_img) {
+		this.fo_img = fo_img;
+	}
+	public String getfo_department() {
+		return fo_department;
+	}
+	public void setfo_department(String fo_department) {
+		this.fo_department = fo_department;
+	}
+	public String getFlight_code() {
+		return flight_code;
+	}
+	public void setFlight_code(String flight_code) {
+		this.flight_code = flight_code;
+	}
+	public String getfo_arrival() {
+		return fo_arrival;
+	}
+	public void setfo_arrival(String fo_arrival) {
+		this.fo_arrival = fo_arrival;
+	}
+	public String getfo_name() {
+		return fo_name;
+	}
+	public void setfo_name(String fo_name) {
+		this.fo_name = fo_name;
+	}
+	public String getCity_code() {
+		return city_code;
+	}
+	public void setCity_code(String city_code) {
+		this.city_code = city_code;
+	}
+	public String getCity_name() {
+		return city_name;
+	}
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+	public int getCity_lati() {
+		return city_lati;
+	}
+	public void setCity_lati(int city_lati) {
+		this.city_lati = city_lati;
+	}
+	public int getCity_long() {
+		return city_long;
+	}
+	public void setCity_long(int city_long) {
+		this.city_long = city_long;
+	}
+	public String getCity_img() {
+		return city_img;
+	}
+	public void setCity_img(String city_img) {
+		this.city_img = city_img;
+	}
+	public String getCity_eng() {
+		return city_eng;
+	}
+	public void setCity_eng(String city_eng) {
+		this.city_eng = city_eng;
+	}
+	public String getAir_code() {
+		return air_code;
+	}
+	public void setAir_code(String air_code) {
+		this.air_code = air_code;
+	}
+	public String getM_code() {
+		return m_code;
+	}
+	public void setM_code(String m_code) {
+		this.m_code = m_code;
+	}
+	public String getDep_loca1() {
+		return dep_loca1;
+	}
+	public void setDep_loca1(String dep_loca1) {
+		this.dep_loca1 = dep_loca1;
+	}
+	public String getDep_loca2() {
+		return dep_loca2;
+	}
+	public void setDep_loca2(String dep_loca2) {
+		this.dep_loca2 = dep_loca2;
+	}
+	public String getDep_date1() {
+		return dep_date1;
+	}
+	public void setDep_date1(String dep_date1) {
+		this.dep_date1 = dep_date1;
+	}
+	public String getDep_date2() {
+		return dep_date2;
+	}
+	public void setDep_date2(String dep_date2) {
+		this.dep_date2 = dep_date2;
+	}
+	public String getDep_time1() {
+		return dep_time1;
+	}
+	public void setDep_time1(String dep_time1) {
+		this.dep_time1 = dep_time1;
+	}
+	public String getDep_time2() {
+		return dep_time2;
+	}
+	public void setDep_time2(String dep_time2) {
+		this.dep_time2 = dep_time2;
+	}
+	public String getRe_loca1() {
+		return re_loca1;
+	}
+	public void setRe_loca1(String re_loca1) {
+		this.re_loca1 = re_loca1;
+	}
+	public String getRe_loca2() {
+		return re_loca2;
+	}
+	public void setRe_loca2(String re_loca2) {
+		this.re_loca2 = re_loca2;
+	}
+	public String getRe_date1() {
+		return re_date1;
+	}
+	public void setRe_date1(String re_date1) {
+		this.re_date1 = re_date1;
+	}
+	public String getRe_date2() {
+		return re_date2;
+	}
+	public void setRe_date2(String re_date2) {
+		this.re_date2 = re_date2;
+	}
+	public String getRe_time1() {
+		return re_time1;
+	}
+	public void setRe_time1(String re_time1) {
+		this.re_time1 = re_time1;
+	}
+	public String getRe_time2() {
+		return re_time2;
+	}
+	public void setRe_time2(String re_time2) {
+		this.re_time2 = re_time2;
+	}
+	public String getH_code() {
+		return h_code;
+	}
+	public void setH_code(String h_code) {
+		this.h_code = h_code;
+	}
+	public String getH_name() {
+		return h_name;
+	}
+	public void setH_name(String h_name) {
+		this.h_name = h_name;
+	}
+	public int getH_lati() {
+		return h_lati;
+	}
+	public void setH_lati(int h_lati) {
+		this.h_lati = h_lati;
+	}
+	public int getH_long() {
+		return h_long;
+	}
+	public void setH_long(int h_long) {
+		this.h_long = h_long;
+	}
+	public String getH_phone() {
+		return h_phone;
+	}
+	public void setH_phone(String h_phone) {
+		this.h_phone = h_phone;
+	}
+	public String getH_basicaddr() {
+		return h_basicaddr;
+	}
+	public void setH_basicaddr(String h_basicaddr) {
+		this.h_basicaddr = h_basicaddr;
+	}
+	public String getH_addr() {
+		return h_addr;
+	}
+	public void setH_addr(String h_addr) {
+		this.h_addr = h_addr;
+	}
+	public String getH_img() {
+		return h_img;
+	}
+	public void setH_img(String h_img) {
+		this.h_img = h_img;
+	}
+	public String getH_content() {
+		return h_content;
+	}
+	public void setH_content(String h_content) {
+		this.h_content = h_content;
+	}
+	public int getH_starn() {
+		return h_starn;
+	}
+	public void setH_starn(int h_starn) {
+		this.h_starn = h_starn;
+	}
+	public String getH_basiccontent() {
+		return h_basiccontent;
+	}
+	public void setH_basiccontent(String h_basiccontent) {
+		this.h_basiccontent = h_basiccontent;
+	}
+	public int getH_occupants() {
+		return h_occupants;
+	}
+	public void setH_occupants(int h_occupants) {
+		this.h_occupants = h_occupants;
+	}
+	public String getR_title() {
+		return r_title;
+	}
+	public void setR_title(String r_title) {
+		this.r_title = r_title;
+	}
+	public String getR_code() {
+		return r_code;
+	}
+	public void setR_code(String r_code) {
+		this.r_code = r_code;
+	}
+	public String getP_code() {
+		return p_code;
+	}
+	public void setP_code(String p_code) {
+		this.p_code = p_code;
+	}
+	public String getR_content() {
+		return r_content;
+	}
+	public void setR_content(String r_content) {
+		this.r_content = r_content;
+	}
+	public String getR_date() {
+		return r_date;
+	}
+	public void setR_date(String r_date) {
+		this.r_date = r_date;
+	}
+	public int getR_score() {
+		return r_score;
+	}
+	public void setR_score(int r_score) {
+		this.r_score = r_score;
+	}
+	public int getR_count() {
+		return r_count;
+	}
+	public void setR_count(int r_count) {
+		this.r_count = r_count;
+	}
+	
+	
+	
+}

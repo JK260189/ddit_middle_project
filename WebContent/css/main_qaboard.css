@@ -1,0 +1,592 @@
+/* 주화면 */
+
+
+a {
+	/* 하이퍼링크 밑줄 제거*/
+	text-decoration-line: none;
+}
+
+main {
+	padding: 20px;
+}
+
+
+
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+main .title{
+	text-align: center;
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	font-size: 50px;
+	letter-spacing: 5px;
+	word-spacing: 15px;
+}
+
+main #qaboardListBox{
+	background-color: transparent;
+	margin: 10px;
+	padding: 10px;
+}
+
+main #qaboardAnswer {
+	
+	width: 1010px;
+	margin-left: 23%;
+	margin-right: 23%;
+	
+	background-color: transparent;
+	
+}
+
+#main #qaboardListBox #qaboardAnswer2 {
+	
+	width: 1300px;
+	margin-left: 15%;
+	margin-right: 15%;
+	
+	background-color: transparent;
+	
+}
+
+main table{
+	border-top: thick solid #5a5a5a;
+	border-bottom: thick solid #5a5a5a;
+
+	padding: 10px;
+	
+	min-width: 1000px;
+	
+	word-wrap: break-word;
+}
+
+
+#main #qaboardListBox #qaboardAnswer2 #qaboardTable2{
+	border-top: thick solid #5a5a5a;
+	border-bottom: thick solid #5a5a5a;
+
+	padding: 10px;
+	
+	min-width: 1300px;
+	word-wrap: break-word;
+}
+
+main table th{
+	border: 1px solid #5a5a5a;
+	border-bottom: thick double #5a5a5a;
+	padding: 25px;
+	
+	text-align: center;
+	color: whitesmoke;
+	
+	font-size: 20px;
+	
+	letter-spacing: 7px;
+	
+	background-color: #9D9D9D;
+}
+
+main #qaboardListBox #qaboardAnswer2 #qaboardTable2 th{
+	border: 1px solid #5a5a5a;
+	border-bottom: thick double #5a5a5a;
+	padding: 25px;
+	
+	text-align: center;
+	color: whitesmoke;
+	
+	font-size: 20px;
+	
+	letter-spacing: 3px;
+	
+	background-color: #9D9D9D;
+}
+
+
+
+main table td{
+	border: 1px solid #5a5a5a;
+	padding: 20px;
+	
+	color: black;
+	
+	font-size: 15px;
+	
+	text-align: center;
+}
+
+
+main table tr:nth-child(even){
+	background-color: #EFEFEF;
+}
+
+main table td:nth-child(1){
+	text-align: center;
+}
+
+
+main table td:nth-child(5){
+	text-align: center;
+}
+
+main table td:nth-child(6){
+	text-align: center;
+}
+
+main table td a{
+	color: black;
+	
+	font-size: 20px;
+}
+
+main table td a:hover{
+	color: #99A799;
+}
+
+main table td a:active{
+	color: orange;
+}
+
+/* --------------- QaBoardInsert.jsp ----------------------- */
+/*
+main #main{
+	background-color:blue;
+	
+	border: 5px dotted white;
+	border-radius: 10px;
+	
+	min-width: 1920px;
+	min-height: 1080px;
+	
+	margin: 20px;
+	padding: 20px;
+	
+	width: 1000px;
+	
+	margin-left: 33%;
+	margin-right: 33%;
+	
+}*/
+
+main #totalBox {
+
+	
+	border: 5px dotted white;
+	border-radius: 30px;
+	
+	
+	margin: 50px;
+	padding: 40px;
+	
+	width: 1000px;
+	height: auto;
+	
+	margin-left: 25%;
+	margin-right: 25%;
+	
+	
+	/* 그림자 효과
+	x값(좌우 수평) y값(상하 수직) 흐림효과 크기 색깔*/
+	box-shadow: 5px 5px 15px 30px grey;
+}
+
+main .insertBox{
+	margin-bottom: 30px;
+}
+
+/*-------------------------------------------------------*/
+
+hr{
+	clear: both;
+}
+/*-------------------------------------------------------*/
+
+main label{
+	float: left;
+	
+	font-size: 20px;
+	
+	letter-spacing: 10px;
+	
+}
+/*-------------------------------------------------------*/
+
+.writerLabel{
+	border: none;
+	
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	
+	margin-right: 10px;
+	padding-right: 12%;
+	
+}
+
+#writer{
+	border: none;
+	
+	background: transparent;
+	
+	font-size: 20px;
+	color:  #5a5a5a;
+	
+	letter-spacing: 10px;
+}
+
+/*-------------------------------------------------------*/
+
+.qaboardTitle {
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+
+
+.qaTitle{
+	border: none;
+	
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	
+	margin-right: 10px;
+	padding-right: 15%;
+
+	letter-spacing: 10px;
+	
+	float: left;
+	
+	font-size: 20px;
+	
+	letter-spacing: 10px;
+	
+}
+
+#qaTitleInsert{
+	border: none;
+	border-radius: 20px;
+	height: 60px;
+	width: 500px;
+	
+	padding-left: 10px;
+	
+	overflow-x: auto;
+	align-items: center;
+	
+	font-size: 15px;
+}
+
+#qaTitleInsert2{
+	border: 1px solid #5a5a5a;
+	border-radius: 20px;
+	height: 60px;
+	width: 500px;
+	
+	padding-left: 10px;
+	
+	overflow-x: auto;
+	align-items: center;
+	
+	font-size: 15px;
+}
+
+/*-------------------------------------------------------*/
+
+.packageSelect{
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+.checkedPackage{
+	
+	border: none;
+	
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	
+	margin-right: 10px;
+	padding-right: 3.8%;
+	
+	font-weight: border;
+	
+	float: left;
+	
+	font-size: 20px;
+	
+	letter-spacing: 10px;
+	
+}
+
+
+/*
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+
+#header-container {
+	border-radius: 30px;
+	display: block;
+
+	width: 320px;
+	height: 55px;
+
+}
+
+
+select {
+	border-radius: 30px;
+	margin: 0;
+	color: #EC6F66;
+	width: 310px;
+	padding: 15px;
+	height: 30px;
+	cursor: pointer;
+}
+
+select:hover {
+	background-color: transparent;
+	color: white;
+	padding: 15px 5px 15px 25px;
+}
+
+select option {
+	border-radius: 30px;
+	background-color: white;
+	color: gray;
+	width: 310px;
+	padding: 10px 15px;
+	height: 30px;
+	cursor: pointer;
+}
+
+select option:hover {
+	padding-left: 25px;
+	width: 270px;
+	color: #EC6F66;
+}*/
+
+
+
+
+
+/*-------------------------------------------------------*/
+.qaboardContent{
+	clear: both;
+}
+
+.qaContent{
+	clear:both;
+	border: none;
+	
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	
+	padding-right: 20px;
+	
+	font-weight: border;
+
+	font-size: 20px;
+	
+	letter-spacing: 10px;
+	
+}
+
+textarea {
+
+	border: none;
+	
+	resize: none;
+	overflow-y: auto;
+	word-wrap: break-word;
+	
+	padding: 30px;
+	
+	width: 900px;
+	height: 300px;
+	
+	border-radius: 50px;
+	
+	font-size: 15px;
+	
+}
+
+#answerBox {
+	background-color: whitesmoke;
+	
+	border-radius: 50px;
+	
+	min-width: 950px;
+	min-height: 300px;
+	width: 950px;
+	height: 300px;
+
+	margin-left: 25%;
+	margin-top: 20px;
+	padding: 1
+
+}
+
+#answerBox #answer #answerContent {
+
+	border: 1px solid #5a5a5a;;
+	
+	resize: none;
+	overflow-y: auto;
+	word-wrap: break-word;
+	
+	margin:10px;
+	padding: 30px;
+	
+	min-width: 900px;
+	min-height: 50px;
+	width: 100%;
+	height: 100%;
+	
+	border-radius: 50px;
+	
+	font-size: 15px;
+	
+}
+
+
+.qaboardContent #text #qa_content2{
+	flex-wrap: wrap;
+	
+	border: 1px solid #5a5a5a;
+	border-radius: 20px;
+	
+	resize: none;
+	overflow-y: auto;
+	word-wrap: break-word;
+	
+	padding: 30px;
+	
+	width: 900px;
+	height: 300px;
+	
+	padding-left: 10px;
+	
+	overflow-x: auto;
+	align-items: center;
+	
+	font-size: 15px;
+}
+
+/*-------------------------------------------------------*/
+#qaBoardSelectDel{
+	display: flex;
+	justify-content: center;
+}
+
+.buttonArea{
+	display: flex;
+	justify-content: center;
+}
+
+
+/*  버튼  */
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.w-btn-indigo-outline {
+	background-color: #ffffff;
+    border: 3px solid #c891ff;;
+    border-radius: 50px;
+    
+    min-width: 200px;
+    min-height: 50px;
+    width:auto;
+    height:auto;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    margin-top: 20px;
+    color: #5a5a5a;
+    
+    font-family:"Cafe24Ssurround";
+    font-size: 20px;
+    
+    
+    letter-spacing: 2px;
+    
+
+}
+
+.w-btn-indigo-outline:hover {
+    color: #ffffff;
+    background: #c891ff;
+}
+
+#buttonList{
+	margin-left: 40%;
+    margin-right: 40%;
+}
+
+/*-------------------------------------------------------*/
+
+.answer_title{
+	text-align: center;
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	font-size: 30px;
+	letter-spacing: 5px;
+	word-spacing: 15px;
+	margin: 10px;
+}
+
+#answer_head{
+	flex-wrap: wrap;
+	align-content: flex-start;
+	
+	font-family: 'Happiness-Sans-Title';
+	font-weight: bolder;
+	font-size: 15px;
+	letter-spacing: 3px;
+	word-spacing: 10px;
+	margin: 10px;
+}
+
+#answer{
+	clear: both;
+	
+	border: none;
+	border-radius: 20px;
+	height: 60px;
+	width: 500px;
+	
+	padding-left: 10px;
+	
+	font-size: 15px;
+	letter-spacing: 3px;
+	word-spacing: 10px;
+}
+
+#result_qa_content{
+	clear:both;
+	border: none;
+	border-radius: 20px;
+	height: 60px;
+	width: 500px;
+	
+	padding-left: 10px;
+	
+	overflow-x: auto;
+	align-items: center;
+	
+	font-size: 15px;
+}

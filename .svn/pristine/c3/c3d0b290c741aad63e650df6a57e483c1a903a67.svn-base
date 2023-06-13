@@ -1,0 +1,50 @@
+package kr.or.ddit.product.dao;
+
+import java.util.List;
+
+import kr.or.ddit.product.vo.BusVO;
+import kr.or.ddit.product.vo.CityVO;
+import kr.or.ddit.product.vo.DetailVO;
+import kr.or.ddit.product.vo.DoProductVO;
+import kr.or.ddit.product.vo.FlightVO;
+import kr.or.ddit.product.vo.FoProductVO;
+import kr.or.ddit.product.vo.HotelVO;
+
+public interface IProductDao {
+	
+	public List<FoProductVO> getAllFoProduct();
+		
+	public int insertFoProduct(FoProductVO fVo);
+	
+	public int updateFoProduct(FoProductVO fVo);
+	
+	public int deleteFoProduct(String fo_code);
+
+	public List<DetailVO> getDetailProdFo(String fo_code);
+
+	public DetailVO getSearchedProdFo(String do_name);
+	
+	public List<DoProductVO> getAllDoProduct();
+	
+	public int insertDoProduct(DoProductVO dVo);
+	
+	public int updateDoProduct(DoProductVO dVo);
+	
+	public int deleteDoProduct(String do_code);
+	
+	public List<DetailVO> getDetailProdDo(String do_code);
+	
+	public DetailVO getSearchedProdDo(String do_name);
+	
+	public int updateHotel(HotelVO hVo);
+	
+	public int updateFlight(FlightVO flightVO);
+	
+	public int updateCity(CityVO cVo);
+	
+	public int updateBus(BusVO bVo);
+	
+	
+	
+	
+}

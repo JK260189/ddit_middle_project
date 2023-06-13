@@ -1,0 +1,65 @@
+package kr.or.ddit.member.vo;
+
+public class QaboardVO {
+
+	private int qa_code;
+	private int m_code;
+	private int s_code;
+	private String qa_title;
+	private String qa_content;
+	private int qa_count;
+	private String qa_date;
+	private String m_name;
+	
+	
+	public String getM_name() {
+		return m_name;
+	}
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+	public String getQa_date() {
+		return qa_date;
+	}
+	public void setQa_date(String qa_date) {
+		this.qa_date = qa_date;
+	}
+	public int getQa_code() {
+		return qa_code;
+	}
+	public void setQa_code(int qa_code) {
+		this.qa_code = qa_code;
+	}
+	public int getM_code() {
+		return m_code;
+	}
+	public void setM_code(int m_code) {
+		this.m_code = m_code;
+	}
+	public int getS_code() {
+		return s_code;
+	}
+	public void setS_code(int s_code) {
+		this.s_code = s_code;
+	}
+	public String getQa_title() {
+		return qa_title;
+	}
+	public void setQa_title(String qa_title) {
+		this.qa_title = qa_title;
+	}
+	public String getQa_content() {
+		return qa_content;
+	}
+	public void setQa_content(String qa_content) {
+		this.qa_content = qa_content;
+	}
+	public int getQa_count() {
+		return qa_count;
+	}
+	public void setQa_count(int qa_count) {
+		this.qa_count = qa_count;
+	}
+	
+	
+}

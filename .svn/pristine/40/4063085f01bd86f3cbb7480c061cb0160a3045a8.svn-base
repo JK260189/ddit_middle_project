@@ -1,0 +1,107 @@
+package kr.or.ddit.member.qaBoard.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.member.vo.QaBoardVO;
+import kr.or.ddit.util.SqlMapClientFactroy;
+
+public class QaBoardDAOImpl implements IQaBoardDAO {
+	SqlMapClient smc;
+	private static QaBoardDAOImpl dao;
+	private QaBoardDAOImpl() {
+		smc = SqlMapClientFactroy.getSqlMapClient();
+	}
+	public static QaBoardDAOImpl getQaBoardDAO() {
+		if(dao==null) dao = new QaBoardDAOImpl();
+		return dao;
+	}
+	
+
+	@Override
+	public int getCountQaBoard() {
+		int cnt = 0;
+		
+		try {
+			cnt = (int) smc.queryForObject("qaboard.countQaBoard");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+
+	@Override
+	public List<QaBoardVO> selectQaBoardList(int m_code) {
+List<QaBoardVO> list = null;
+		
+		try {
+			list = smc.queryForList("qaboard.selectQaBoardList", m_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	@Override
+	public int updateQaBoardPostCount(int qa_code) {
+		int cnt=0;
+		
+		try {
+			cnt = smc.update("qaboard.updateQaBoardPostCount", qa_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public int insertQaBoard(QaBoardVO qaBoardVO) {
+		int cnt=0;
+		
+		try {
+			cnt = (int) smc.insert("qaboard.insertQaBoard", qaBoardVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public int deleteQaBoard(int m_code) {
+		int cnt=0;
+		
+		try {
+			cnt = smc.delete("qaboard.deleteQaBoard", m_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public List<QaBoardVO> updateQaBoard(QaBoardVO qaboardVO) {
+		List<QaBoardVO> list = null;
+		
+		try {
+			list = smc.queryForList("qaboard.updateQaBoard", qaboardVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+}

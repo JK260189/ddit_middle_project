@@ -1,0 +1,61 @@
+package kr.or.ddit.member.qaBoard.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.member.qaBoard.service.IQABoardService;
+import kr.or.ddit.member.qaBoard.service.QABoardServiceImpl;
+import kr.or.ddit.member.vo.QaboardVO;
+
+
+@WebServlet("/qaBoardInsert.do")
+public class QaBoardInsert extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		int qaCode = Integer.parseInt(request.getParameter("qa_code"));//1.게시판 번호
+		String qaTitle = request.getParameter("qa_title");//2.제목
+		String memName = request.getParameter("m_name");//3.글쓴이
+		String qaDate = request.getParameter("qa_date");//4.작성일자
+		int qaCount = Integer.parseInt(request.getParameter("qa_count"));//5.조회수
+		
+		QaboardVO qaboardVO = new QaboardVO();
+		qaboardVO.setQa_code(qaCode);
+		qaboardVO.setQa_title(qaTitle);
+		qaboardVO.setM_name(memName);
+		qaboardVO.setQa_date(qaDate);
+		qaboardVO.setQa_count(qaCode);
+		
+		IQABoardService service = QABoardServiceImpl.getQABoardService();
+		
+		// 성공 여부 반환값
+		int cnt = service.insertQaBoard(qaboardVO);
+		
+		if(cnt==1) {
+			System.out.println("insertQaBoard SQL 메서드가 작동되었습니다.");
+		// 문서 경로
+		request.setAttribute("viewPage", "/WEB-INF/view/member/QaBoard_Insert.jsp");
+				
+		// viewPage 정보 보낼 곳
+		request.getRequestDispatcher("/layout/layout.jsp").forward(request, response);
+		
+		//response.sendRedirect(request.getContextPath()+"/WEB-INF/view/member/QaBoard_Insert.jsp");
+		} else {
+			System.out.println("insertQaBoard SQL 메서드가 작동되지 않았습니다.");
+		}
+	}
+
+}

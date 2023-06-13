@@ -1,0 +1,55 @@
+package kr.or.ddit.member.qaBoard.service;
+
+import java.util.List;
+
+import kr.or.ddit.member.qaBoard.dao.IQABoardDAO;
+import kr.or.ddit.member.qaBoard.dao.QABoardDAOImpl;
+import kr.or.ddit.member.vo.QaboardVO;
+
+
+public class QABoardServiceImpl implements IQABoardService {
+	IQABoardDAO dao;
+	private static QABoardServiceImpl service;
+	private QABoardServiceImpl() {
+		dao = QABoardDAOImpl.getQaBoardDAO();
+	}
+	public static QABoardServiceImpl getQABoardService() {
+		if(service==null) service = new QABoardServiceImpl();
+		return service;
+	}
+
+	@Override
+	public int getCountQaBoard() {
+		return dao.getCountQaBoard();
+	}
+
+	@Override
+	public List<QaboardVO> selectByQaBoardList(int m_code) {
+		return dao.selectByQaBoardList(m_code);
+	}
+
+	@Override
+	public int updateCount(int qa_code) {
+		return dao.updateCount(qa_code);
+	}
+
+	@Override
+	public int insertQaBoard(QaboardVO qaboardVO) {
+		return dao.insertQaBoard(qaboardVO);
+	}
+
+	@Override
+	public int deleteQaBoard(int m_code) {
+		return dao.deleteQaBoard(m_code);
+	}
+
+	@Override
+	public int updateQaBoard(QaboardVO qaboardVO) {
+		return dao.updateQaBoard(qaboardVO);
+	}
+	@Override
+	public List<QaboardVO> selectQaBoardByQaCode(int m_code) {
+		return dao.selectQaBoardByQaCode(m_code);
+	}
+
+}

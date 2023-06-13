@@ -1,0 +1,120 @@
+package kr.or.ddit.member.qaBoard.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.member.vo.QaboardVO;
+import kr.or.ddit.util.SqlMapClientFactroy;
+
+public class QABoardDAOImpl implements IQABoardDAO {
+	SqlMapClient smc;
+	
+	private static QABoardDAOImpl dao;
+	private QABoardDAOImpl() {
+		smc = SqlMapClientFactroy.getSqlMapClient();
+	}
+	public static QABoardDAOImpl getQaBoardDAO() {
+		if(dao==null) dao = new QABoardDAOImpl();
+		return dao;
+	}
+	
+	
+	
+	@Override
+	public int getCountQaBoard() {
+		int cnt = 0;
+		
+		try {
+			cnt = (int) smc.queryForObject("qaboard.countQaBoard");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public List<QaboardVO> selectByQaBoardList(int m_code) {
+		List<QaboardVO> list = null;
+		
+		try {
+			list = smc.queryForList("qaboard.selectByQaBoardList", m_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	@Override
+	public int updateCount(int qa_code) {
+		int cnt = 0;
+		
+		try {
+			cnt = smc.update("qaboard.updateCount", qa_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public int insertQaBoard(QaboardVO qaboardVO) {
+		int cnt = 0;
+		
+		try {
+			cnt = (int) smc.insert("qaboard.insertQaBoard", qaboardVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public int deleteQaBoard(int m_code) {
+		int cnt = 0;
+		
+		try {
+			cnt = smc.delete("qaboard.deleteQaBoard", m_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	
+	@Override
+	public int updateQaBoard(QaboardVO qaboardVO) {
+		int cnt = 0;
+		
+		try {
+			cnt = smc.update("qaboard.updateQaBoard", qaboardVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	@Override
+	public List<QaboardVO> selectQaBoardByQaCode(int m_code) {
+		List<QaboardVO> list = null;
+		
+		try {
+			list = (List<QaboardVO>) smc.queryForList("qaboard.selectQaBoardByQaCode", m_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+}

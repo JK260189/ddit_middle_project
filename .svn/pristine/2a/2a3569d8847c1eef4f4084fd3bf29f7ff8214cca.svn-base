@@ -1,0 +1,47 @@
+package kr.or.ddit.member.qaBoard.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.member.qaBoard.service.IQABoardService;
+import kr.or.ddit.member.qaBoard.service.QABoardServiceImpl;
+import kr.or.ddit.member.vo.QaboardVO;
+
+
+@WebServlet("/qABoardInsertForm.do")
+public class QABoardInsertForm extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		IQABoardService service = QABoardServiceImpl.getQABoardService();
+		
+		int m_code = Integer.parseInt(request.getParameter("qaM_code"));//글쓴이
+		String qa_title = request.getParameter("qaTitleInsert");//제목
+		int s_code = Integer.parseInt(request.getParameter("qaS_Code"));//여행코드
+		String qa_content = request.getParameter("qaContentInsert");//내용
+		
+		QaboardVO qaboardVO = new QaboardVO();
+		qaboardVO.setM_code(m_code);
+		qaboardVO.setQa_title(qa_title);
+		qaboardVO.setS_code(s_code);
+		qaboardVO.setQa_content(qa_content);
+		
+		int cnt = service.insertQaBoard(qaboardVO);
+		
+		request.setAttribute("viewPage", "/WEB-INF/view/member/QaBoard_List.jsp");
+
+		// view(jsp) 페이지로 이동
+		request.getRequestDispatcher("/layout/layout.jsp").forward(request, response);
+		
+		
+	}
+
+}

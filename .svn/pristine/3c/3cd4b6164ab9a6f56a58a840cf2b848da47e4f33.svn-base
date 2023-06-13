@@ -1,0 +1,48 @@
+package kr.or.ddit.member.qaBoard.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.member.qaBoard.service.IQABoardService;
+import kr.or.ddit.member.qaBoard.service.QABoardServiceImpl;
+import kr.or.ddit.member.vo.QaboardVO;
+
+// 게시글 보기(제목 선택)
+@WebServlet("/qaBoardView.do")
+public class QaBoardView extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("제목 클릭 후 QaBoardView 서블릿 시작");
+		request.setCharacterEncoding("utf");
+		
+		IQABoardService service = QABoardServiceImpl.getQABoardService();
+		
+		int m_code = (int)request.getAttribute("m_code");
+		int qa_code = (int)request.getAttribute("qa_code");
+		int qa_count = (int)request.getAttribute("qa_count");
+
+		List<QaboardVO> list = service.selectQaBoardByQaCode(m_code);
+		int postHit = service.updateCount(qa_code);
+		if(postHit > qa_count) {
+			System.out.println("조회수 증가 성공");
+		}
+		
+		for(QaboardVO qaboardVO : list) {
+			//특정 글 하나의 데이터
+			request.setAttribute("qaboardVO_aPost", qaboardVO);
+		}
+		
+		request.setAttribute("viewPage", "/WEB-INF/view/member/QaBoard_View.jsp");
+
+		// view(jsp) 페이지로 이동
+		request.getRequestDispatcher("/layout/layout.jsp").forward(request, response);
+	}
+
+}

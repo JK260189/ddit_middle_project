@@ -1,0 +1,577 @@
+@charset "UTF-8";
+
+		/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+	min-width: 1080px;
+	width: auto;
+	color: #5a5a5a;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+	margin-bottom: 5rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	bottom: 4rem;
+	z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+	height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+	margin-bottom: 1.5rem;
+	text-align: center;
+	
+}
+
+/* rtl:begin:ignore */
+/*메인 화면 동그라미-시간 제한 */
+.marketing .col-lg-4 p {
+	margin-right: .75rem;
+	margin-left: .75rem;
+	
+	text-align: center;
+	
+	font-size: 20px;
+	font-weight: bolder;
+	color: #5A5A5A;
+	
+	text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+	
+	position: relative;
+	top: -180px;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+	margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+/* rtl:begin:remove */
+.featurette-heading {
+	letter-spacing: -.05rem;
+}
+
+/* rtl:end:remove */
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 80em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+
+@media (min-width: 124em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+    
+    
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
+@media (min-width: 1080px) {
+	.bd-placeholder-img-lg {
+	font-size: 3.5rem;
+	}
+}
+
+
+.b-example-divider {
+	height: 3rem;
+	background-color: rgba(0, 0, 0, .1);
+	border: solid rgba(0, 0, 0, .15);
+	border-width: 1px 0;
+	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+
+.b-example-vr {
+	flex-shrink: 0;
+	width: 1.5rem;
+	height: 100vh;
+}
+
+
+.bi {
+	vertical-align: -.125em;
+	fill: currentColor;
+}
+
+
+.nav-scroller {
+	position: relative;
+	z-index: 2;
+	height: 2.75rem;
+	overflow-y: hidden;
+}
+
+
+.nav-scroller .nav {
+	display: flex;
+	flex-wrap: nowrap;
+	padding-bottom: 1rem;
+	margin-top: -1px;
+	overflow-x: auto;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+
+@font-face {
+    font-family: 'HS-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*
+─────추가 커스텀────────────────────────────
+*/
+
+
+a {
+	text-decoration-line: none;
+	text-decoration-color: #5a5a5a;
+}
+
+#container-header {
+	position: sticky;
+	
+	top: 0;
+	bottom: 150px;
+	left: 0;
+	right: 0;
+	
+}
+
+
+header {
+	margin: 0;
+	padding: 0;
+	
+	position: sticky;
+	
+	top: 0;
+	bottom: 150px;
+	left: 0;
+	right: 0;
+	
+	width: 100%;
+	height: 150px;
+
+
+	z-index: 20;
+}
+
+
+/* 헤더 div */
+#top-left {
+	cursor: pointer;
+}
+
+
+/* 헤더 로고 이미지*/
+#top-logo {
+	position: relative;
+	
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+
+/*검색 div*/
+#top-search {
+	position: relative;
+	float: left;
+
+	margin-right: 0;
+
+	padding: 10px;
+
+	width: 80%;
+
+	border-radius: 10px;
+}
+
+/* 검색 입력 창*/
+.form-search {
+	position: relative;
+	float: left;
+	
+	width: 70%;
+	height: 3rem;
+
+	border: 1px solid grey;
+	border-radius: 5px;
+	
+	align-items: center;
+}
+
+.search-btn #search-ico {
+	position: relative;
+	float: left;
+	
+	width: 10px;
+	height: 2.99rem;
+	
+	cursor: pointer;
+	
+	border: 1px solid grey;
+	border-radius: 10px;
+
+	background-color: white;
+}
+
+
+/*공간 조절*/
+.top-blank {
+	min-width: 15%;
+	width:20%;
+
+	position: relative;
+	float: left;
+
+	padding: 0;
+	margin: 0;
+}
+
+
+/* 우측 상단 메뉴 */
+.top-right {
+	min-width: 14rem;
+	clear: none;
+	
+	position: relative;
+	float: left;
+
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+/* 글씨 하이퍼링크 전체 */
+.top-letters {
+	float: right;
+	font-size: 1.10em;
+	
+	cursor: pointer;
+}
+
+.top-letters a {
+	color: #5A5A5A;
+	font-weight: bolder;
+}
+
+.top-letters a:hover {
+	color: slateblue;
+	font-weight: bolder;
+}
+
+
+/* 아이콘 전체 div*/
+.top-right-button {
+	position: relative;
+	clear:both;
+
+	float: right;
+	padding: 0;
+	margin: 0;
+	
+	height: 100px;
+}
+
+/* 마이메뉴 */
+.top-icon-1  {
+	position: relative;
+	float: left;
+	
+	top: -15px;
+	
+	cursor: pointer;
+
+	border-radius: 10px;
+
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 0;
+
+	margin:0;
+
+	width: 5rem;
+
+	text-align: center;
+	font-size: 0.45em;
+	
+}
+
+/* 찜 */
+.top-icon-2 {
+	position: relative;
+	float: left;
+	
+	top: -15px;
+	
+	cursor: pointer;
+
+
+	border-radius: 10px;
+
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 0;
+
+	margin:0;
+
+	width: 5rem;
+
+	text-align: center;
+	font-size: 0.45em;
+}
+
+.top-icon-1:hover {
+	color: slateblue;
+	font-weight: bolder;
+}
+
+.top-icon-2:hover {
+	color: slateblue;
+	font-weight: bolder;
+}
+
+
+#myMenu {
+	margin: 0;
+	padding: 0;
+	
+	top: -100px;
+	
+	height: 60px;
+}
+
+#fav {
+	margin: 0;
+	padding: 0;
+	
+	top: -100px;
+	
+	height: 60px;
+}
+
+
+#container-header{
+	border: 5px dotted blue;
+}
+
+
+
+/*상단 메뉴*/
+#selectMenu {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	right: 0;
+	z-index: 30;
+	
+	background-color: white;
+}
+
+#selectMenu a {
+	color: #5a5a5a;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+/* 메뉴 버튼*/
+#menuBtn {
+	position: fixed;
+	top: 175px;
+	left: 10;
+	z-index: 20;
+	opacity: 0.8;
+}
+
+input[id="menuIcon"] {
+	display: none;
+}
+
+input[id="menuIcon"] + label {
+	display: block;
+	width: 50px;
+	height: 30px;
+	position: relative;
+	cursor: pointer;
+}
+
+input[id="menuIcon"] + label span {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	border-radius: 30px;
+	background: #5A5A5A;
+	border: 1px solid white;
+	transition: all .35s;
+}
+
+input[id="menuIcon"] + label span:nth-child(1){
+	top:0;
+}
+
+input[id="menuIcon"] + label span:nth-child(2){
+	top:50%;
+	transform:translateY(-50%);
+}
+
+input[id="menuIcon"] + label span:nth-child(3){
+	bottom:0;
+}
+
+input[id="menuIcon"]:checked + label {
+	z-index: 20;
+}
+
+
+input[id="menuIcon"]:checked + label span:nth-child(1){
+	top:50%;
+	transform:translateY(-50%) rotate(-45deg);
+}
+
+input[id="menuIcon"]:checked + label span:nth-child(2){
+	opacity:0;
+}
+
+input[id="menuIcon"]:checked + label span:nth-child(3){
+	bottom:50%;
+	transform:translateY(50%) rotate(45deg);
+}
+
+
+
+
+/* 메뉴 바 */
+div.flex-shrink-0 {
+	visibility: hidden;
+	width: 280px;
+	height: 100%;
+	
+	position: fixed;
+	top: 175px;
+	left: -280px;
+	z-index: 10;
+	transition:all .35s;
+	opacity: 0.8;
+}
+
+
+input[id="menuIcon"]:checked + label + div {
+	visibility: visible;
+	width: 280px;
+	height: 100%;
+	
+	position: fixed;
+	top: 175px;
+	left: 0px;
+	z-index: 10;
+	transition:all .35s;
+	opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+main {
+	float: none;
+
+	z-index: 10;
+
+	background-color: darkseagreen;
+}
+
+.carousel-item {
+	cursor: pointer;
+}
+
+
+
+p .col-lg-4_text {
+	position: relative;
+	top: 40%;
+	justify-content: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+
+
+
+.remainTime{
+	border-radius: 20px;
+	margin: 10px;
+	padding: 10px;
+	
+	background-color : lightgray;
+}
+

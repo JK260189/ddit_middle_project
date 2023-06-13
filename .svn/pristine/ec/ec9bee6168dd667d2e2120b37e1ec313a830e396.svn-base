@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다.
+ -->
+ <!DOCTYPE sqlMap
+ 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+ 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap namespace= "purchase">
+ 
+	<insert id = "insertDoPurchase" parameterClass = "purchaseVO">
+		<selectKey keyProperty = "p_code" resultClass = "int">
+			select purchase_seq.nextval from dual
+		</selectKey>
+		insert into purchase(do_code, p_code, p_sdate, p_edate, p_people, p_name, p_date, fo_code, m_code, p_price, p_amount)
+		values(#do_code#, #p_code#, #p_sdate#, #p_edate#, #p_people#, #p_name#, sysdate, null, #m_code#, #p_price#, #p_amount#)
+	 </insert>
+ 
+	<insert id = "insertFoPurchase" parameterClass = "purchaseVO">
+		<selectKey keyProperty = "p_code" resultClass = "int">
+			select purchase_seq.nextval from dual
+		</selectKey>
+		insert into purchase(do_code, p_code, p_sdate, p_edate, p_people, p_name, p_date, fo_code, m_code, p_price, p_amount)
+		values(null, #p_code#, #p_sdate#, #p_edate#, #p_people#, #p_name#, sysdate, #fo_code#, #m_code#, #p_price#, #p_amount#)
+	 </insert>
+ 	
+ 	<insert id = "insertDoSchedule" parameterClass = "purchaseVO">
+ 			
+ 		insert into schedule(s_code, m_code, s_title, s_sday, s_eday, p_code, do_code, s_view, fo_code)
+ 		values (schedule_seq.nextval, #m_code#, #s_title#, #s_sday#, #s_eday#, #p_code#, #do_code#, 0, null)
+ 	
+ 	</insert>
+ 	
+ 	<insert id = "insertFoSchedule" parameterClass = "purchaseVO">
+ 		insert into schedule(s_code, m_code, s_title, s_sday, s_eday, p_code, fo_code, s_view, do_code)
+ 		values (schedule_seq.nextval, #m_code#, #s_title#, #s_sday#, #s_eday#, #p_code#, #fo_code#, 0, null)
+ 	
+ 	</insert>
+ 	
+ 	
+ 	
+ </sqlMap>

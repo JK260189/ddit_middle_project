@@ -1,0 +1,104 @@
+package kr.or.ddit.product.vo;
+
+import java.util.List;
+
+public class FoProductVO {
+
+	private int fo_code;
+	private int h_code;
+	private int fo_min;
+	private int fo_max;
+	private int fo_price;
+	private int fo_valid;
+	private String fo_img;
+	private String fo_department;
+	private String fo_arrival;
+	private String fo_name;
+	private int flight_code;
+	private String fo_content;
+	private List<Pack_ImgVO> iList;
+	
+	public List<Pack_ImgVO> getiList() {
+		return iList;
+	}
+	public void setiList(List<Pack_ImgVO> iList) {
+		this.iList = iList;
+	}
+	public String getFo_content() {
+		return fo_content;
+	}
+	public void setFo_content(String fo_content) {
+		this.fo_content = fo_content;
+	}
+	public int getFo_code() {
+		return fo_code;
+	}
+	public void setFo_code(int fo_code) {
+		this.fo_code = fo_code;
+	}
+	public int getH_code() {
+		return h_code;
+	}
+	public void setH_code(int h_code) {
+		this.h_code = h_code;
+	}
+	public int getFo_min() {
+		return fo_min;
+	}
+	public void setFo_min(int fo_min) {
+		this.fo_min = fo_min;
+	}
+	public int getFo_max() {
+		return fo_max;
+	}
+	public void setFo_max(int fo_max) {
+		this.fo_max = fo_max;
+	}
+	public int getFo_price() {
+		return fo_price;
+	}
+	public void setFo_price(int fo_price) {
+		this.fo_price = fo_price;
+	}
+	public int getFo_valid() {
+		return fo_valid;
+	}
+	public void setFo_valid(int fo_valid) {
+		this.fo_valid = fo_valid;
+	}
+	public String getFo_img() {
+		return fo_img;
+	}
+	public void setFo_img(String fo_img) {
+		this.fo_img = fo_img;
+	}
+	public String getFo_department() {
+		return fo_department;
+	}
+	public void setFo_department(String fo_department) {
+		this.fo_department = fo_department;
+	}
+	public String getFo_arrival() {
+		return fo_arrival;
+	}
+	public void setFo_arrival(String fo_arrival) {
+		this.fo_arrival = fo_arrival;
+	}
+	public String getFo_name() {
+		return fo_name;
+	}
+	public void setFo_name(String fo_name) {
+		this.fo_name = fo_name;
+	}
+	public int getFlight_code() {
+		return flight_code;
+	}
+	public void setFlight_code(int flight_code) {
+		this.flight_code = flight_code;
+	}
+	
+	
+	
+	
+	
+}

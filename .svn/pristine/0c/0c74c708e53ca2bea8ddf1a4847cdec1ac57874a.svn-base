@@ -1,0 +1,111 @@
+package kr.or.ddit.notice.dao;
+
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.notice.vo.NoticeVO;
+
+
+public class NoticeDaoImpl implements INoticeDao {
+	private SqlMapClient smc;
+	
+	private static NoticeDaoImpl dao;
+	private NoticeDaoImpl() { }
+	public static NoticeDaoImpl getInstance() {
+	    if(dao==null) dao = new NoticeDaoImpl();
+	    return dao;
+	}
+	
+	
+	
+	@Override
+	public int insertNotice(NoticeVO noticeVo) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("notice.insertNotice", noticeVo);
+			if(obj==null) cnt = 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	
+	@Override
+	public int deleteNotice(int n_code) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("notice.deleteNotice", n_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	
+	@Override
+	public int updateNotice(NoticeVO noticeVo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("notice.deleteNotice", noticeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	
+	@Override
+	public List<NoticeVO> getAllNoticeList() {
+		List<NoticeVO> noticeList = null;
+		try {
+			noticeList = smc.queryForList("notice.deleteNotice");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return noticeList;
+	}
+
+	
+	@Override
+	public NoticeVO getNotice(int n_code) {
+		NoticeVO noticeVo = null;
+		try {
+			noticeVo = (NoticeVO)smc.queryForObject("notice.getNotice", n_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		return noticeVo;
+	}
+
+	
+	@Override
+	public List<NoticeVO> getSearchNoticeList(String n_title) {
+		List<NoticeVO> noticeList = null;
+		try {
+			noticeList = smc.queryForList("notice.getSearchNoticeList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return noticeList;
+	}
+
+
+	@Override
+	public int setCountIncrement(int n_code) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("notice.setCountIncrement", n_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+}

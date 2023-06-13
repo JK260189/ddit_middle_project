@@ -1,0 +1,226 @@
+package kr.or.ddit.product.dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.product.vo.BusVO;
+import kr.or.ddit.product.vo.CityVO;
+import kr.or.ddit.product.vo.DetailVO;
+import kr.or.ddit.product.vo.DoProductVO;
+import kr.or.ddit.product.vo.FlightVO;
+import kr.or.ddit.product.vo.FoProductVO;
+import kr.or.ddit.product.vo.HotelVO;
+import kr.or.ddit.util.SqlMapClientFactroy;
+import sun.security.jca.GetInstance;
+
+public class ProductDaoImpl implements IProductDao{
+	SqlMapClient smc;
+	
+	private static ProductDaoImpl dao;
+	private ProductDaoImpl() {
+		smc = SqlMapClientFactroy.getSqlMapClient();
+	}
+	public static ProductDaoImpl getInstance() {
+		if(dao == null) dao = new ProductDaoImpl();
+		return dao;
+	}
+
+	@Override
+	public List<FoProductVO> getAllFoProduct() {
+		List<FoProductVO> list = new ArrayList<FoProductVO>();
+		try {
+			list = smc.queryForList("product.getAllFoProduct");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int insertFoProduct(FoProductVO fVo) {
+		int cnt = 0;
+		try {
+			Object obj = (FoProductVO) smc.insert("product.insertFoProduct", fVo);
+			if (obj==null) {
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateFoProduct(FoProductVO fVo) {
+		int cnt = 0;
+		
+		try {
+			
+			cnt = smc.update("product.updateFoProduct", fVo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteFoProduct(String fo_code) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("product.deleteFoProduct", fo_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public List<DetailVO> getDetailProdFo(String fo_code) {
+		List<DetailVO> list = new ArrayList<DetailVO>();
+		try {
+			list = smc.queryForList("product.getDetailProdFo", fo_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public DetailVO getSearchedProdFo(String do_name) {
+		DetailVO dVo = null;
+		try {
+			dVo = (DetailVO)smc.queryForObject("product.getSearchedProdFo", do_name);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dVo;
+	}
+
+	@Override
+	public List<DoProductVO> getAllDoProduct() {
+		List<DoProductVO> list = new ArrayList<DoProductVO>();
+		try {
+			list = smc.queryForList("product.getAllDoProduct");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int insertDoProduct(DoProductVO dVo) {
+		int cnt = 0;
+		try {
+			Object obj = (FoProductVO) smc.insert("product.insertDoProduct", dVo);
+			if (obj==null) {
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateDoProduct(DoProductVO dVo) {
+		int cnt = 0;
+		
+		try {
+			
+			cnt = smc.update("product.updateDoProduct", dVo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteDoProduct(String do_code) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("product.deleteDoProduct", do_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public List<DetailVO> getDetailProdDo(String do_code) {
+		List<DetailVO> list = new ArrayList<DetailVO>();
+		try {
+			list = smc.queryForList("product.getDetailProdDo", do_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public DetailVO getSearchedProdDo(String do_name) {
+		DetailVO dVo = null;
+		try {
+			dVo = (DetailVO)smc.queryForObject("product.getSearchedProdDo", do_name);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dVo;
+	}
+
+	@Override
+	public int updateHotel(HotelVO hVo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("product.updateHotel", hVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateFlight(FlightVO flightVO) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("product.updateFlight", flightVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateCity(CityVO cVo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("product.updateCity", cVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateBus(BusVO bVo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("product.updateBus", bVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	
+}

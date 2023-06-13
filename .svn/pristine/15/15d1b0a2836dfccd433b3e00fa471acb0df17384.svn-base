@@ -1,0 +1,123 @@
+package kr.or.ddit.member.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.util.SqlMapClientFactroy;
+
+public class MemberDaoImpl implements MemberDao{
+	
+	private static final MemberDaoImpl instance = new MemberDaoImpl();
+	
+	private SqlMapClient smc;
+
+	
+	private MemberDaoImpl() {
+		smc = SqlMapClientFactroy.getSqlMapClient();
+	}
+	
+	public static MemberDaoImpl getInstance() {
+		return instance;
+	}
+	
+	
+	@Override
+	public int insertMember(MemberVO member) {
+		int cnt = 0;
+		
+		try {
+			Object obj = smc.insert("member.insertMember",member);
+			if(obj == null) {
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int updateMember(MemberVO member) {
+		 int cnt = 0;
+	      try {
+	         
+	         cnt = smc.update("member.modifyMember", member);
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         
+	      } 
+	      
+	      return cnt;
+	}
+
+	@Override
+	public int deleteMember(MemberVO memberVO) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("member.deleteMember",memberVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public List<MemberVO> getAllMemberinfo() {
+		List<MemberVO> memberVO = null;
+		try {
+			memberVO = smc.queryForList("member.getAllMember");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return memberVO;
+	}
+
+	@Override
+	public MemberVO getMemberinfo(int MemberVO) {
+		MemberVO memberVO = null;
+		
+		try {
+			memberVO = (MemberVO)smc.queryForObject("member.getMember",memberVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return memberVO;
+	}
+
+	public MemberVO getMemberinfo(MemberVO memVo) {
+		
+		MemberVO loginMember = null;	//반환값이 저장될 변수
+		try {
+			loginMember = (MemberVO) smc.queryForObject("member.getLoginMember", memVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return loginMember;
+	}
+
+	@Override
+	public boolean idCheck(String m_id) {
+		boolean chk = false; 
+		try {
+			
+			int cnt= (int) smc.queryForObject("member.idCheck",m_id);
+			
+			if(cnt>0) { 
+				chk=true;
+			}
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("중복체크입니다.",ex);
+		}
+		return chk;
+	}
+	
+	
+}

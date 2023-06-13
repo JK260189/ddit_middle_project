@@ -1,0 +1,88 @@
+<%@page import="com.google.gson.JsonElement"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="kr.or.ddit.member.qaBoard.vo.PageVO"%>
+<%@page import="kr.or.ddit.member.vo.QaboardVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%-- 서블릿에서 저장한 데이터 꺼내기 --%>
+<%
+
+	List<QaboardVO> list = (List<QaboardVO>) request.getAttribute("QaBoardList");
+
+%>
+
+    
+      <h2>문의 게시판 목록</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="게시판 번호"></th>
+              <th scope="제목"></th>
+              <th scope="글쓴이"></th>
+              <th scope="작성일자"></th>
+              <th scope="조회수"></th>
+            </tr>
+          </thead>
+          <tbody>
+          
+<%
+          	for(QaboardVO qvo : list) {
+          		if(qvo==null) {
+          %>
+			<tr colspan="5">
+              <td><span>게시글이 존재하지 않습니다.</span></td>
+             </tr>
+<%
+		}else{
+%>
+			<tr>
+              <td><%=qvo.getQa_code() %></td>
+              <td>
+              	  <a href="<%=request.getContextPath() %>/qaBoardView.do?qa_title=<%=qvo.getQa_title() %>"><%=qvo.getQa_title() %></a>
+              </td>
+              <td><%=qvo.getM_name() %></td>
+              <td><%=qvo.getQa_date() %></td>
+              <td><%=qvo.getQa_count() %></td>
+            </tr>
+            
+<%
+		}
+	}
+%>
+          </tbody>
+        </table>
+      </div>
+
+
+<!-- 페이징네이션 나중에 수정 -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&laquo;</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">임시1</a></li>
+    <li class="page-item"><a class="page-link" href="#"></a></li>
+    <li class="page-item"><a class="page-link" href="#"></a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">&raquo;</a>
+    </li>
+  </ul>
+
+</nav>
+
+
+
+<!-- 글쓰기 버튼 -->
+<div>
+	<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+	<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" location.href="<%=request.getContextPath() %>/qABoardInsert.do">글쓰기</button>
+	</div>
+</div>
+
+
+
+

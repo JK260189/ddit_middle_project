@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다.
+ -->
+ <!DOCTYPE sqlMap
+ 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+ 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap namespace= "qaboard">
+ 
+ 	
+ 
+ 
+	<!-- 글 전체 개수 확인 -->
+ 	<select id="countQaBoard" resultClass="int">
+ 		select count(*) from qaboard
+ 	</select>
+ 
+	<!-- 문의 게시글 목록 조회 -->
+	<select id="selectByQaBoardList" resultClass="qaboardVO" parameterClass="int">
+		select b.qa_code, b.qa_title, a.m_name, b.qa_date, b.qa_count
+        from member a join qaboard b
+				on a.m_code = b.m_code
+                where b.m_code=#m_code#
+          		order by qa_code desc
+	</select>
+	
+	<!-- 특정 문의 게시글 자세히 조회 -->
+	<select id="selectQaBoardByQaCode" resultClass="qaboardVO" parameterClass="int">
+		select * from qaboard where qa_code=#qa_code#
+	</select>
+	
+	
+	
+	<!-- 조회수 증가 -->
+	<update id="updateCount" parameterClass="int">
+		update qaboard
+				set qa_count = qa_count + 1
+				where qa_code=#qa_code#
+	</update>
+	
+	
+	
+	<!-- 글 쓰기 -->
+	<insert id="insertQaBoard" parameterClass="qaboardVO">
+		insert into qaboard
+				values(QA_CODE_SEQ.NEXTVAL, #m_code#, #s_code#, #qa_title#, #qa_content#, 0, sysdate)
+
+		<selectKey keyProperty="qa_code" resultClass="int">
+			select QA_CODE_SEQ.CURRVAL from dual
+		</selectKey>
+	</insert>
+	
+	
+	<!-- 글 삭제 -->
+	<delete id="deleteQaBoard" parameterClass="qaboardVO">
+		delete from qaboard
+				where qa_code=#qa_code# and m_code=#m_code#
+	</delete>
+
+	
+
+	<!-- 글 수정 -->
+	<update id="updateQaBoard" parameterClass="qaboardVO">
+		update qaboard
+				set s_code=#s_code#,
+					qa_title=#qa_title#,
+					qa_content=#qa_content#,
+					qa_date=sysdate
+					where m_code=#m_code#
+					and qa_code=#qa_code#
+	</update>
+	
+	
+	
+	<select id="selectSchedule" resultClass="scheduleVO" parameterClass="int">
+		SELECT * FROM SCHEDULE WHERE S_CODE=#S_CODE#
+	</select>
+	
+	<select id="selectMember" resultClass="memberVO" parameterClass="int">
+		select * from member where m_code=#m_code#
+	</select>
+	
+	<select id="selectSTitle" resultClass="scheduleVO" parameterClass="int">
+		select b.s_title, b.s_code
+				from member a join schedule b
+				on a.m_code = b.m_code
+				where a.m_code = #m_code#
+	</select>
+	
+	
+	<!-- 관리자 -->
+	<select id="selectAdminInfo" resultClass="adminVO">
+		select * from admin
+	</select>
+
+	<select id="selectMemberInfo" resultClass="memberVO">
+		select * from member
+	</select>
+	
+	<select id="selectQaBoardList" resultClass="qaboardVO">
+		select * from qaboard
+	</select>
+	
+	<delete id="deleteQaBoardByOne" parameterClass="int">
+		delete from qaboard
+				where qa_code =#qa_code#
+	</delete>
+	
+	
+ 	
+ </sqlMap>

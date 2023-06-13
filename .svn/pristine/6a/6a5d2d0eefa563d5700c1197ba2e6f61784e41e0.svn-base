@@ -1,0 +1,64 @@
+package kr.or.ddit.member.qaBoard.dao;
+
+import java.util.List;
+
+import kr.or.ddit.member.vo.QaboardVO;
+
+
+public interface IQABoardDAO {
+	/**
+	 * 문의 게시글 전체 개수 반환하는 메서드
+	 * 
+	 * @return 조회된 레코드 개수(int)
+	 */
+	public int getCountQaBoard();
+	
+	/**
+	 * 문의 게시글 목록 전체를 반환하는 메서드
+	 * 
+	 * @param m_code(회원번호)
+	 * @return 해당 m_code로 등록된 게시글 목록(list)
+	 */
+	public List<QaboardVO> selectByQaBoardList(int m_code);
+	
+	/**
+	 * 특정 문의 게시글 하나를 자세히 보는 메서드
+	 * 
+	 * @param m_code
+	 * @return 게시글 정보 list
+	 */
+	public List<QaboardVO> selectQaBoardByQaCode(int m_code);
+	
+	/**
+	 * 해당 qa_code를 가진 게시글을 방문했을 때 조회수가 카운트되는 메서드
+	 * 
+	 * @param qa_code
+	 * @return 카운트된 조회수(int)
+	 */
+	public int updateCount(int qa_code);
+	
+	/**
+	 * 폼에서 작성하여 qaboardVO에 저장한 게시글 정보를 DB에 저장하는 메서드
+	 * 
+	 * @param qaboardVO
+	 * @return 성공 1, 실패 0
+	 */
+	public int insertQaBoard(QaboardVO qaboardVO);
+	
+	/**
+	 * m_code가 등록한 해당 게시글을 삭제하는 메서드
+	 * 
+	 * @param m_code
+	 * @return 성공 1, 실패 0
+	 */
+	public int deleteQaBoard(int m_code);
+	
+	/**
+	 * 이미 등록된 게시글을 수정하여 등록하는 메서드
+	 * 
+	 * @param qaboardVO
+	 * @return 성공 1, 실패 0
+	 */
+	public int updateQaBoard(QaboardVO qaboardVO);
+
+}

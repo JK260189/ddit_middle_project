@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	이 문서는 iBatis에서 처리할 SQL문을 작성하는 문서입니다.
+ -->
+ <!DOCTYPE sqlMap
+ 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+ 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap namespace= "notice">
+ 
+<!--  VO 값
+	private int n_code;//게시판번호
+	private String n_title;//제목
+	private String n_writer;//글쓴이
+	private String n_mdate;//작성일//DB에서 DATE 형식
+	private String n_ddate;//DB에서 DATE 형식
+	private int n_count;//조회수-내부만
+	private String n_image;//필요시
+	private int admin_code;//관리자번호
+	private String n_content;//내용
+	-->
+
+
+<!--게시판 글 작성 후, DB에 등록-->
+	<insert id="insertNotice" parameterClass="NoticeVO">
+		insert into notice(n_code, n_title, n_writer, n_mdate, n_count, n_image, n_content)
+				values(NOTICE_SEQ.NEXTVAL(),
+						#n_title#,
+						#n_writer#,
+						sysdate,
+						0,
+						#n_image#,
+						#n_content#)
+	</insert>
+
+
+	<!-- 게시글 삭제, 파라미터 int n_code-->
+	<delete id="deleteNotice" parameterClass="int">
+		delete from notice
+				where n_code=#n_code#
+	</delete>
+
+
+	<!--게시글 수정, 파라미터 NoticeVO-->
+	<update id="updateNotice" parameterClass="NoticeVO">
+		update notice
+				set(n_title=#n_title#,
+					n_writer=#n_writer#,
+					n_mdate=#n_mdate#,
+					n_image=#n_image#,
+					n_content=#n_content#)
+				where n_code=#n_code#
+	</update>
+	
+	<!-- 페이징 처리 차후 -->
+	<!-- 게시글 목록(게시판 진입화면) -->
+	<select id="getAllNoticeList" resultClass="NoticeVO">
+		select * from notice
+	</select>
+
+
+	<!-- 게시글 진입(게시글 내용보기), 파라미터 n_code -->
+	<select id="getNotice" parameterClass="int" resultClass="NoticeVO">
+		select n_code, n_title, n_writer, n_mdate, n_count, n_image, n_content
+				from notice
+				where n_code=#n_code#
+	</select>
+
+
+	<!-- 게시글 제목 검색, 파라미터 n_title-->
+	<select id="getSearchNoticeList" parameterClass="String" resultClass="NoticeVO">
+		select n_code, n_title, n_writer, n_mdate, n_count, n_image, n_content
+				from notice
+				where n_title like #%n_title%#
+	</select>
+
+
+	<!-- 게시글 조회수 증가, 파라미터 n_code-->
+	<update id="setCountIncrement" parameterClass="n_code">
+		update notice
+				set n_count = n_count + 1
+				where n_code like #n_code#
+	</update>
+
+
+</sqlMap>
